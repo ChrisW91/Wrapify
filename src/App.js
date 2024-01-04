@@ -25,7 +25,6 @@ const App = () => {
 
 
 
-
   return (
     <>
       {isLoading && <LoadingIndicator />}
