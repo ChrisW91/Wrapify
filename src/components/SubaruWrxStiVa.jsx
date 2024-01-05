@@ -334,4 +334,4 @@ export function SubaruWrxStiVa({ carColor, brakeColor, hideSpoiler, setIsLoading
   )
 }
 
-// useGLTF.preload('models/subaru_wrx_sti.glb')
+useGLTF.preload('https://pub-1e74d0bc9c59443f90fdc7adddccf38e.r2.dev/subaru_wrx_sti.glb')
