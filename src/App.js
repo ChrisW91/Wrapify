@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { OrbitControls } from '@react-three/drei';
 import { LoadingIndicator } from './components/LoadingIndicator';
 import { Popup } from './components/Popup';
+import { Volk_Te37 } from './components/Volk_te-37_rim';
 
 
 
@@ -49,7 +50,8 @@ const App = () => {
                 LEFT: THREE.MOUSE.ROTATE,
                 MIDDLE: THREE.MOUSE.DOLLY,
                 RIGHT: null
-              }} />
+              }}
+            />
 
 
             <directionalLight position={[0, 5, 0]} intensity={2} />
@@ -68,7 +70,7 @@ const App = () => {
               reverseLightTint={reverseLightTint}
             />}
 
-
+            {/* <Volk_Te37 /> */}
 
           </Canvas>
 
