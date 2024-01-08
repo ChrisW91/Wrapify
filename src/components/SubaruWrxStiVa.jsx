@@ -11,6 +11,7 @@ import React, { useEffect } from 'react'
 import { useGLTF } from '@react-three/drei'
 import { extend } from '@react-three/fiber';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 
 
 // useGLTF.preload('models/subaru_wrx_sti2.glb', (loader) => {
