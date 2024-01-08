@@ -31,10 +31,10 @@ useGLTF.preload('models/subaru_wrx_sti2.glb', (loader) => {
 });
 
 export function SubaruWrxStiVa({ carColor, brakeColor, hideSpoiler, setIsLoading, reverseLightTint, ...props }) {
-  // Ensure useGLTF uses the DRACOLoader instance
+
   useGLTF.setDRACOLoader(dracoLoader);
 
-  // Load the model
+
   const { nodes, materials } = useGLTF('models/subaru_wrx_sti2.glb', dracoLoader);
 
   useEffect(() => {
