@@ -8,31 +8,18 @@ Title: Subaru WRX STI
 */
 
 import React, { useEffect } from 'react'
-
-import { useLoader } from '@react-three/fiber';
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { useGLTF } from '@react-three/drei'
 
 
-// useGLTF.preload('models/subaru_wrx_sti2.glb', (loader) => {
-//   const dracoLoader = new DRACOLoader();
-//   dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
-//   loader.setDRACOLoader(dracoLoader);
-// });
 
-// export function SubaruWrxStiVa({ carColor, brakeColor, hideSpoiler, setIsLoading, reverseLightTint, ...props }) {
 
-//   // const { nodes, materials } = useGLTF('https://pub-1e74d0bc9c59443f90fdc7adddccf38e.r2.dev/subaru_wrx_sti.glb')
-//   const { nodes, materials } = useGLTF('models/subaru_wrx_sti2.glb')
-
-const dracoLoader = new DRACOLoader();
-dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
 
 export function SubaruWrxStiVa({ carColor, brakeColor, hideSpoiler, setIsLoading, reverseLightTint, ...props }) {
-  // Use the GLTFLoader with DRACOLoader configured
-  const { nodes, materials } = useLoader(GLTFLoader, 'models/subaru_wrx_sti2.glb', loader => {
-    loader.setDRACOLoader(dracoLoader);
-  });
+
+  // const { nodes, materials } = useGLTF('https://pub-1e74d0bc9c59443f90fdc7adddccf38e.r2.dev/subaru_wrx_sti.glb')
+  const { nodes, materials } = useGLTF('models/subaru_wrx_sti2.glb')
+
+
 
   useEffect(() => {
     if (nodes && materials) {
@@ -349,4 +336,5 @@ export function SubaruWrxStiVa({ carColor, brakeColor, hideSpoiler, setIsLoading
   )
 }
 
-
+// useGLTF.preload('https://pub-1e74d0bc9c59443f90fdc7adddccf38e.r2.dev/subaru_wrx_sti.glb')
+// useGLTF.preload('models/subaru_wrx_sti.glb')
