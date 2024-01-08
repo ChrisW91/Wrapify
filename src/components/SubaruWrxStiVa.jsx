@@ -16,7 +16,7 @@ import { useGLTF } from '@react-three/drei'
 
 export function SubaruWrxStiVa({ carColor, brakeColor, hideSpoiler, setIsLoading, reverseLightTint, ...props }) {
 
-  const { nodes, materials } = useGLTF('https://pub-1e74d0bc9c59443f90fdc7adddccf38e.r2.dev/subaru_wrx_sti.glb')
+  const { nodes, materials } = useGLTF('https://pub-1e74d0bc9c59443f90fdc7adddccf38e.r2.dev/subaru_wrx_sti2.glb')
   // const { nodes, materials } = useGLTF('models/subaru_wrx_sti2.glb')
 
 
