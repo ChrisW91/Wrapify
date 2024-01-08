@@ -12,18 +12,30 @@ import { useGLTF } from '@react-three/drei'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 
 
+// useGLTF.preload('models/subaru_wrx_sti2.glb', (loader) => {
+//   const dracoLoader = new DRACOLoader();
+//   dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+//   loader.setDRACOLoader(dracoLoader);
+// });
+
+// export function SubaruWrxStiVa({ carColor, brakeColor, hideSpoiler, setIsLoading, reverseLightTint, ...props }) {
+
+//   // const { nodes, materials } = useGLTF('https://pub-1e74d0bc9c59443f90fdc7adddccf38e.r2.dev/subaru_wrx_sti.glb')
+//   const { nodes, materials } = useGLTF('models/subaru_wrx_sti2.glb')
+
+const dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+
 useGLTF.preload('models/subaru_wrx_sti2.glb', (loader) => {
-  const dracoLoader = new DRACOLoader();
-  dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
   loader.setDRACOLoader(dracoLoader);
 });
 
 export function SubaruWrxStiVa({ carColor, brakeColor, hideSpoiler, setIsLoading, reverseLightTint, ...props }) {
+  // Ensure useGLTF uses the DRACOLoader instance
+  useGLTF.setDRACOLoader(dracoLoader);
 
-  // const { nodes, materials } = useGLTF('https://pub-1e74d0bc9c59443f90fdc7adddccf38e.r2.dev/subaru_wrx_sti.glb')
-  const { nodes, materials } = useGLTF('models/subaru_wrx_sti2.glb')
-
-
+  // Load the model
+  const { nodes, materials } = useGLTF('models/subaru_wrx_sti2.glb', dracoLoader);
 
   useEffect(() => {
     if (nodes && materials) {
