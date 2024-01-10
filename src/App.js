@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { OrbitControls } from '@react-three/drei';
 import { LoadingIndicator } from './components/LoadingIndicator';
 import { Popup } from './components/Popup';
-import { Volk_Te37 } from './components/Volk_te-37_rim';
+
 
 
 
@@ -16,12 +16,16 @@ import { Volk_Te37 } from './components/Volk_te-37_rim';
 
 const App = () => {
 
-  const [brakeColor, setBrakeColor] = useState('#CFF702')
-  const [carColor, setCarColor] = useState('#0736F8')
+  const [brakeColor, setBrakeColor] = useState('')
+  const [carColor, setCarColor] = useState('')
   const [showCarModel, setShowCarModel] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [hideSpoiler, setHideSpoiler] = useState(false)
   const [reverseLightTint, setReverseLightTint] = useState(false);
+  const [isStockSelected, setIsStockSelected] = useState(true);
+  const [isTE37Selected, setIsTE37Selected] = useState(false);
+  const [wheelColor, setWheelColor] = useState("#000000")
+
 
 
 
@@ -63,11 +67,17 @@ const App = () => {
 
             {showCarModel && <SubaruWrxStiVa
               carColor={carColor}
+              setCarColor={setCarColor}
               setIsLoading={setIsLoading}
               brakeColor={brakeColor}
+              setBrakeColor={setBrakeColor}
               hideSpoiler={hideSpoiler}
               setReverseLightTint={setReverseLightTint}
               reverseLightTint={reverseLightTint}
+              isStockSelected={isStockSelected}
+              isTE37Selected={isTE37Selected}
+              wheelColor={wheelColor}
+              setWheelColor={setWheelColor}
             />}
 
             {/* <Volk_Te37 /> */}
@@ -90,6 +100,9 @@ const App = () => {
         setHideSpoiler={setHideSpoiler}
         setReverseLightTint={setReverseLightTint}
         reverseLightTint={reverseLightTint}
+        setIsStockSelected={setIsStockSelected}
+        setIsTE37Selected={setIsTE37Selected}
+        setWheelColor={setWheelColor}
       />
 
 

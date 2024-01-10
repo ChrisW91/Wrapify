@@ -5,7 +5,7 @@ import { CustomOptions } from "./CustomOptions"
 
 
 
-const Gui = ({ setCarColor, carColor, showCarModel, setShowCarModel, setIsLoading, brakeColor, setBrakeColor, setHideSpoiler, hideSpoiler, setReverseLightTint, reverseLightTint, isLoading }) => {
+const Gui = ({ setCarColor, carColor, showCarModel, setShowCarModel, setIsLoading, brakeColor, setBrakeColor, setHideSpoiler, hideSpoiler, setReverseLightTint, reverseLightTint, setIsStockSelected, setIsTE37Selected, setWheelColor }) => {
 
 
   const handleCarModelClick = () => {
@@ -21,13 +21,14 @@ const Gui = ({ setCarColor, carColor, showCarModel, setShowCarModel, setIsLoadin
   return (
     <>
 
-      <div className="gui-container-left">
+      {!showCarModel && (<div className="gui-container-left">
         <CarModelPicker
           showCarModel={showCarModel}
           setShowCarModel={setShowCarModel}
           onModelClick={handleCarModelClick}
         />
       </div>
+      )}
 
 
 
@@ -49,6 +50,9 @@ const Gui = ({ setCarColor, carColor, showCarModel, setShowCarModel, setIsLoadin
           handleHideSpoilerClick={handleHideSpoilerClick}
           reverseLightTint={reverseLightTint}
           setReverseLightTint={setReverseLightTint}
+          setIsStockSelected={setIsStockSelected}
+          setIsTE37Selected={setIsTE37Selected}
+          setWheelColor={setWheelColor}
         />
 
       </div>)}

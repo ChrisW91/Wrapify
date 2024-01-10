@@ -7,32 +7,29 @@ Source: https://sketchfab.com/3d-models/volk-te-37-rim-0b0e2fe6a72d4801b454d94aa
 Title: Volk Te-37 Rim
 */
 
-import React, { useRef } from 'react'
+import React, { useEffect } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function Volk_Te37(props) {
+
+
+
+export function Volk_Te37({ wheelColor, setWheelColor, ...props }) {
   const { nodes, materials } = useGLTF('models/volk_te-37_rim.glb')
+
+  useEffect(() => {
+    if (materials.material_0) {
+      materials.material_0.color.setStyle(wheelColor)
+    }
+  }, [wheelColor])
+
+
   return (
     <group {...props} dispose={null}>
-      {/* front right */}
-      <group rotation={[-Math.PI / 2, 0, -0.93]} scale={2.23} position={[0.5, -0.415, 2.43]}>
-        <mesh geometry={nodes.Object_2.geometry} material={materials.material_0} rotation={[Math.PI / 2, 0, 0]} />
-      </group>
-
-      {/* back right */}
-      <group rotation={[-Math.PI / 2, 0, -0.85]} scale={2.23} position={[-2.16, -0.42, -0.866]}>
-        <mesh geometry={nodes.Object_2.geometry} material={materials.material_0} rotation={[Math.PI / 2, 0, 0]} />
-      </group>
-
-      <group rotation={[-Math.PI / 2, 0, 2.25]} scale={2.23} position={[2.245, -0.415, 1.03]}>
-        <mesh geometry={nodes.Object_2.geometry} material={materials.material_0} rotation={[Math.PI / 2, 0, 0]} />
-      </group>
-
-      <group rotation={[-Math.PI / 2, 0, 2.24]} scale={2.23} position={[-0.356, -0.42, -2.26]}>
-        <mesh geometry={nodes.Object_2.geometry} material={materials.material_0} rotation={[Math.PI / 2, 0, 0]} />
+      <group scale={1.69}>
+        <mesh geometry={nodes.Object_2.geometry} material={materials.material_0} />
       </group>
     </group>
   )
 }
 
-// useGLTF.preload('models/volk_te-37_rim.glb')
+

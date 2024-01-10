@@ -7,24 +7,41 @@ Source: https://sketchfab.com/3d-models/subaru-wrx-sti-36f4a47b619a49bda4c1870e7
 Title: Subaru WRX STI
 */
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
+import { Volk_Te37 } from './Volk_te-37_rim';
 
 
 
 
 
-export function SubaruWrxStiVa({ carColor, brakeColor, hideSpoiler, setIsLoading, reverseLightTint, ...props }) {
+export function SubaruWrxStiVa({ carColor, setCarColor, brakeColor, setBrakeColor, hideSpoiler, setIsLoading, reverseLightTint, isStockSelected, isTE37Selected, wheelColor, setWheelColor, ...props }) {
 
   const { nodes, materials } = useGLTF('https://pub-1e74d0bc9c59443f90fdc7adddccf38e.r2.dev/subaru_wrx_sti2.glb')
+  useGLTF.preload('https://pub-1e74d0bc9c59443f90fdc7adddccf38e.r2.dev/subaru_wrx_sti2.glb')
+
   // const { nodes, materials } = useGLTF('models/subaru_wrx_sti2.glb')
+  // useGLTF.preload('models/subaru_wrx_sti2.glb')
+
+
+  const [applyWrxColor, setApplyWrxColor] = useState(false);
+
+  useEffect(() => {
+    if (!applyWrxColor) {
+      setCarColor("#0736F8")
+      setBrakeColor("#CFF702")
+      setWheelColor("#000000")
+      setApplyWrxColor(true)
+    }
+  }, [applyWrxColor])
+
+
 
 
 
   useEffect(() => {
     if (nodes && materials) {
       setIsLoading(false);
-      // console.log("setisloading false called");
     }
   }, [nodes, materials, setIsLoading]);
 
@@ -47,6 +64,11 @@ export function SubaruWrxStiVa({ carColor, brakeColor, hideSpoiler, setIsLoading
     }
   }, [brakeColor, materials.Dark_Brake]);
 
+  useEffect(() => {
+    if (materials.Wheel_Rim) {
+      materials.Wheel_Rim.color.setStyle(wheelColor)
+    }
+  }, [wheelColor])
 
   useEffect(() => {
     if (reverseLightTint) {
@@ -313,28 +335,74 @@ export function SubaruWrxStiVa({ carColor, brakeColor, hideSpoiler, setIsLoading
             <mesh geometry={nodes.Object_265.geometry} material={materials.Tire_Rubber} />
           </group>
 
-          {/* Rims */}
-          <mesh geometry={nodes.Object_7.geometry} material={materials.Rims} position={[-0.779, 0.393, 1.468]} rotation={[-Math.PI, 0, Math.PI / 2]} scale={[0.93, 0.857, 0.93]} />
-          <mesh geometry={nodes.Object_9.geometry} material={materials.Wheel_Rim} position={[-0.775, 0.393, 1.468]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={[0.034, 0.027, 0.034]} />
-          <mesh geometry={nodes.Object_11.geometry} material={materials.Logo} position={[-0.897, 0.393, 1.468]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={0.035} />
-          <mesh geometry={nodes.Object_13.geometry} material={materials.Wheel_Rim} position={[-0.817, 0.393, 1.468]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={[0.035, 0.028, 0.035]} />
-          <mesh geometry={nodes.Object_225.geometry} material={materials.Wheel_Rim} position={[-0.795, 0.384, -1.323]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={[0.034, 0.027, 0.034]} />
-          <mesh geometry={nodes.Object_227.geometry} material={materials.Rims} position={[-0.799, 0.384, -1.323]} rotation={[Math.PI, 0, Math.PI / 2]} scale={[0.93, 0.857, 0.93]} />
-          <mesh geometry={nodes.Object_229.geometry} material={materials.Wheel_Rim} position={[-0.836, 0.384, -1.323]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={[0.035, 0.028, 0.035]} />
-          <mesh geometry={nodes.Object_234.geometry} material={materials.Logo} position={[-0.916, 0.384, -1.323]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={0.035} />
-          <mesh geometry={nodes.Object_242.geometry} material={materials.Rims} position={[0.79, 0.39, -1.319]} rotation={[-0.033, 0.001, -1.607]} scale={[0.93, 0.857, 0.93]} />
-          <mesh geometry={nodes.Object_244.geometry} material={materials.Wheel_Rim} position={[0.786, 0.391, -1.319]} rotation={[1.537, -0.036, -1.572]} scale={[0.034, 0.027, 0.034]} />
-          <mesh geometry={nodes.Object_246.geometry} material={materials.Logo} position={[0.907, 0.386, -1.319]} rotation={[1.537, -0.036, -1.572]} scale={0.035} />
-          <mesh geometry={nodes.Object_248.geometry} material={materials.Wheel_Rim} position={[0.828, 0.389, -1.319]} rotation={[1.537, -0.036, -1.572]} scale={[0.035, 0.028, 0.035]} />
-          <mesh geometry={nodes.Object_256.geometry} material={materials.Rims} position={[0.779, 0.393, 1.463]} rotation={[0, 0, -Math.PI / 2]} scale={[0.93, 0.857, 0.93]} />
-          <mesh geometry={nodes.Object_258.geometry} material={materials.Wheel_Rim} position={[0.775, 0.393, 1.463]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} scale={[0.034, 0.027, 0.034]} />
-          <mesh geometry={nodes.Object_260.geometry} material={materials.Logo} position={[0.897, 0.393, 1.463]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} scale={0.035} />
-          <mesh geometry={nodes.Object_262.geometry} material={materials.Wheel_Rim} position={[0.817, 0.393, 1.463]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} scale={[0.035, 0.028, 0.035]} />
+
+          {isStockSelected && (
+            <group>
+              <mesh geometry={nodes.Object_7.geometry} material={materials.Rims} position={[-0.779, 0.393, 1.468]} rotation={[-Math.PI, 0, Math.PI / 2]} scale={[0.93, 0.857, 0.93]} />
+              <mesh geometry={nodes.Object_9.geometry} material={materials.Wheel_Rim} position={[-0.775, 0.393, 1.468]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={[0.034, 0.027, 0.034]} />
+              <mesh geometry={nodes.Object_11.geometry} material={materials.Logo} position={[-0.897, 0.393, 1.468]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={0.035} />
+              <mesh geometry={nodes.Object_13.geometry} material={materials.Wheel_Rim} position={[-0.817, 0.393, 1.468]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={[0.035, 0.028, 0.035]} />
+
+
+              <mesh geometry={nodes.Object_225.geometry} material={materials.Wheel_Rim} position={[-0.795, 0.384, -1.323]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={[0.034, 0.027, 0.034]} />
+              <mesh geometry={nodes.Object_227.geometry} material={materials.Rims} position={[-0.799, 0.384, -1.323]} rotation={[Math.PI, 0, Math.PI / 2]} scale={[0.93, 0.857, 0.93]} />
+              <mesh geometry={nodes.Object_229.geometry} material={materials.Wheel_Rim} position={[-0.836, 0.384, -1.323]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={[0.035, 0.028, 0.035]} />
+              <mesh geometry={nodes.Object_234.geometry} material={materials.Logo} position={[-0.916, 0.384, -1.323]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={0.035} />
+
+
+              <mesh geometry={nodes.Object_242.geometry} material={materials.Rims} position={[0.79, 0.39, -1.319]} rotation={[-0.033, 0.001, -1.607]} scale={[0.93, 0.857, 0.93]} />
+              <mesh geometry={nodes.Object_244.geometry} material={materials.Wheel_Rim} position={[0.786, 0.391, -1.319]} rotation={[1.537, -0.036, -1.572]} scale={[0.034, 0.027, 0.034]} />
+              <mesh geometry={nodes.Object_246.geometry} material={materials.Logo} position={[0.907, 0.386, -1.319]} rotation={[1.537, -0.036, -1.572]} scale={0.035} />
+              <mesh geometry={nodes.Object_248.geometry} material={materials.Wheel_Rim} position={[0.828, 0.389, -1.319]} rotation={[1.537, -0.036, -1.572]} scale={[0.035, 0.028, 0.035]} />
+
+
+              <mesh geometry={nodes.Object_256.geometry} material={materials.Rims} position={[0.779, 0.393, 1.463]} rotation={[0, 0, -Math.PI / 2]} scale={[0.93, 0.857, 0.93]} />
+              <mesh geometry={nodes.Object_258.geometry} material={materials.Wheel_Rim} position={[0.775, 0.393, 1.463]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} scale={[0.034, 0.027, 0.034]} />
+              <mesh geometry={nodes.Object_260.geometry} material={materials.Logo} position={[0.897, 0.393, 1.463]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} scale={0.035} />
+              <mesh geometry={nodes.Object_262.geometry} material={materials.Wheel_Rim} position={[0.817, 0.393, 1.463]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} scale={[0.035, 0.028, 0.035]} />
+            </group>
+          )}
+
+          {isTE37Selected && (
+            <group>
+
+              <Volk_Te37
+                position={[-0.745, 0.393, 1.468]}
+                rotation={[-Math.PI, -Math.PI / 2, -Math.PI / 2]}
+                scale={[0.93, 0.857, 0.93]}
+                wheelColor={wheelColor}
+                setWheelColor={setWheelColor}
+              />
+              <Volk_Te37
+                position={[-0.76, 0.384, -1.323]}
+                rotation={[Math.PI, -Math.PI / 2, Math.PI / 2]}
+                scale={[0.93, 0.857, 0.93]}
+                wheelColor={wheelColor}
+                setWheelColor={setWheelColor}
+              />
+              <Volk_Te37
+                position={[0.75, 0.39, -1.319]}
+                rotation={[Math.PI, Math.PI / 2, -1.607]}
+                scale={[0.93, 0.857, 0.93]}
+                wheelColor={wheelColor}
+                setWheelColor={setWheelColor}
+              />
+              <Volk_Te37
+                position={[0.745, 0.393, 1.463]}
+                rotation={[Math.PI, Math.PI / 2, -Math.PI / 2]}
+                scale={[0.93, 0.857, 0.93]}
+                wheelColor={wheelColor}
+                setWheelColor={setWheelColor}
+              />
+
+            </group>
+          )}
+
+
         </group>
       </group>
     </group>
   )
 }
 
-// useGLTF.preload('https://pub-1e74d0bc9c59443f90fdc7adddccf38e.r2.dev/subaru_wrx_sti.glb')
-// useGLTF.preload('models/subaru_wrx_sti.glb')
+
