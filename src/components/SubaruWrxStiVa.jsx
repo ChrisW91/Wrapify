@@ -9,7 +9,7 @@ Title: Subaru WRX STI
 
 import React, { useEffect, useState } from 'react'
 import { useGLTF } from '@react-three/drei'
-import { Volk_Te37 } from './Volk_te-37_rim';
+import { VolkTe37 } from './Volk_te-37_rim';
 
 
 
@@ -19,6 +19,7 @@ export function SubaruWrxStiVa({ carColor, setCarColor, brakeColor, setBrakeColo
 
   const { nodes, materials } = useGLTF('https://pub-1e74d0bc9c59443f90fdc7adddccf38e.r2.dev/subaru_wrx_sti2.glb')
   useGLTF.preload('https://pub-1e74d0bc9c59443f90fdc7adddccf38e.r2.dev/subaru_wrx_sti2.glb')
+  useGLTF.preload('https://pub-1e74d0bc9c59443f90fdc7adddccf38e.r2.dev/volk_te-37_rim.glb')
 
   // const { nodes, materials } = useGLTF('models/subaru_wrx_sti2.glb')
   // useGLTF.preload('models/subaru_wrx_sti2.glb')
@@ -33,7 +34,7 @@ export function SubaruWrxStiVa({ carColor, setCarColor, brakeColor, setBrakeColo
       setWheelColor("#000000")
       setApplyWrxColor(true)
     }
-  }, [applyWrxColor])
+  }, [applyWrxColor, setCarColor, setBrakeColor, setWheelColor])
 
 
 
@@ -68,7 +69,7 @@ export function SubaruWrxStiVa({ carColor, setCarColor, brakeColor, setBrakeColo
     if (materials.Wheel_Rim) {
       materials.Wheel_Rim.color.setStyle(wheelColor)
     }
-  }, [wheelColor])
+  }, [wheelColor, materials.Wheel_Rim])
 
   useEffect(() => {
     if (reverseLightTint) {
@@ -366,35 +367,53 @@ export function SubaruWrxStiVa({ carColor, setCarColor, brakeColor, setBrakeColo
           {isTE37Selected && (
             <group>
 
-              <Volk_Te37
-                position={[-0.745, 0.393, 1.468]}
-                rotation={[-Math.PI, -Math.PI / 2, -Math.PI / 2]}
-                scale={[0.93, 0.857, 0.93]}
-                wheelColor={wheelColor}
-                setWheelColor={setWheelColor}
-              />
-              <Volk_Te37
-                position={[-0.76, 0.384, -1.323]}
-                rotation={[Math.PI, -Math.PI / 2, Math.PI / 2]}
-                scale={[0.93, 0.857, 0.93]}
-                wheelColor={wheelColor}
-                setWheelColor={setWheelColor}
-              />
-              <Volk_Te37
-                position={[0.75, 0.39, -1.319]}
-                rotation={[Math.PI, Math.PI / 2, -1.607]}
-                scale={[0.93, 0.857, 0.93]}
-                wheelColor={wheelColor}
-                setWheelColor={setWheelColor}
-              />
-              <Volk_Te37
-                position={[0.745, 0.393, 1.463]}
-                rotation={[Math.PI, Math.PI / 2, -Math.PI / 2]}
-                scale={[0.93, 0.857, 0.93]}
-                wheelColor={wheelColor}
-                setWheelColor={setWheelColor}
-              />
+              <group>
+                <VolkTe37
+                  position={[-0.745, 0.393, 1.468]}
+                  rotation={[-Math.PI, -Math.PI / 2, -Math.PI / 2]}
+                  scale={[0.93, 0.857, 0.93]}
+                  wheelColor={wheelColor}
+                  setWheelColor={setWheelColor}
+                  material={materials.Wheel_Rim}
+                />
+                <mesh geometry={nodes.Object_11.geometry} material={materials.Logo} position={[-0.83, 0.393, 1.468]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={0.035} />
+              </group>
 
+              <group>
+                <VolkTe37
+                  position={[-0.76, 0.384, -1.323]}
+                  rotation={[Math.PI, -Math.PI / 2, Math.PI / 2]}
+                  scale={[0.93, 0.857, 0.93]}
+                  wheelColor={wheelColor}
+                  setWheelColor={setWheelColor}
+                  material={materials.Wheel_Rim}
+                />
+                <mesh geometry={nodes.Object_234.geometry} material={materials.Logo} position={[-0.83, 0.384, -1.323]} rotation={[Math.PI / 2, 0, Math.PI / 2]} scale={0.035} />
+              </group>
+
+              <group>
+                <VolkTe37
+                  position={[0.75, 0.39, -1.319]}
+                  rotation={[Math.PI, Math.PI / 2, -1.607]}
+                  scale={[0.93, 0.857, 0.93]}
+                  wheelColor={wheelColor}
+                  setWheelColor={setWheelColor}
+                  material={materials.Wheel_Rim}
+                />
+                <mesh geometry={nodes.Object_246.geometry} material={materials.Logo} position={[0.83, 0.386, -1.319]} rotation={[1.537, -0.036, -1.572]} scale={0.035} />
+              </group>
+
+              <group>
+                <VolkTe37
+                  position={[0.745, 0.393, 1.463]}
+                  rotation={[Math.PI, Math.PI / 2, -Math.PI / 2]}
+                  scale={[0.93, 0.857, 0.93]}
+                  wheelColor={wheelColor}
+                  setWheelColor={setWheelColor}
+                  material={materials.Wheel_Rim}
+                />
+                <mesh geometry={nodes.Object_260.geometry} material={materials.Logo} position={[0.83, 0.393, 1.463]} rotation={[Math.PI / 2, 0, -Math.PI / 2]} scale={0.035} />
+              </group>
             </group>
           )}
 

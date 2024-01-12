@@ -4,23 +4,23 @@
 export const CustomOptions = ({ brakeColor, setBrakeColor, hideSpoiler, handleHideSpoilerClick, setReverseLightTint, reverseLightTint, setIsStockSelected, setIsTE37Selected, setWheelColor }) => {
 
 
-  const handleCheckboxChange = (event) => {
-    setReverseLightTint(event.target.checked);
+  const handleCheckboxChange = () => {
+    setReverseLightTint(prevState => !prevState);
   };
 
-  const handleRimsChange = (event) => {
+  const handleRimsChange = (value) => {
     setIsStockSelected(false)
     setIsTE37Selected(false)
 
-    if (event.target.value === 'stock') {
+    if (value === 'stock') {
       setIsStockSelected(true)
-    } else if (event.target.value === 'te-37') {
+    } else if (value === 'te-37') {
       setIsTE37Selected(true)
     }
   }
 
-  const handleRimColorChange = (event) => {
-    setWheelColor(event.target.value)
+  const handleRimColorChange = (value) => {
+    setWheelColor(value)
 
   }
 
@@ -28,52 +28,47 @@ export const CustomOptions = ({ brakeColor, setBrakeColor, hideSpoiler, handleHi
 
   return (
     <>
-      <div>
-        <label id="spoilerCheckboxLabel">Hide Spoiler:
-          <input
-            className="checkbox"
-            type="checkbox"
-            id="spoilerCheckbox"
-            checked={hideSpoiler}
-            onChange={handleHideSpoilerClick}
-          />
-
-        </label>
-
-
+      <div className="button-container">
         <div>
-          <label id="tailLightTintCheckbox">Tail-Light Tint:
-            <input
-              className="checkbox"
-              type="checkbox"
-              id="tailLightTintCheckbox"
-              checked={reverseLightTint}
-              onChange={handleCheckboxChange}
-            />
-          </label>
+          <button
+            id="spoilerButton"
+            className={`btn ${hideSpoiler ? 'active' : ''}`}
+            onClick={handleHideSpoilerClick}
+          >
+            Hide Spoiler
+          </button>
         </div>
-      </div>
+        <div>
+          <button
+            id="tailLightTintButton"
+            className={`btn ${reverseLightTint ? 'active' : ''}`}
+            onClick={handleCheckboxChange}
+          >
+            Tail-Light Tint
+          </button>
+        </div>
 
-      <div>
-        <label>
-          Wheels:
-          <select onChange={handleRimsChange}>
-            <option value="stock">Stock</option>
-            <option value="te-37">TE-37</option>
-          </select>
-        </label>
-      </div>
 
-      <div>
-        <label>
-          Wheel Color:
-          <select onChange={handleRimColorChange}>
-            <option value="#000000">Black</option>
-            <option value="#FFFFFF">White</option>
-            <option value="#b3a31e">Gold</option>
-            <option value="#6E6767">Grey</option>
-          </select>
-        </label>
+
+        <div className="dropdown wheel-dropdown">
+          <button className="dropbtn btn">Wheels</button>
+          <div className="dropdown-content">
+            <a href="#" onClick={() => handleRimsChange('stock')}>Stock</a>
+            <a href="#" onClick={() => handleRimsChange('te-37')}>TE-37</a>
+          </div>
+        </div>
+
+        <div className="dropdown wheel-color-dropdown">
+          <button className="dropbtn btn">Wheel Color</button>
+          <div className="dropdown-content">
+            <a href="#" onClick={() => handleRimColorChange('#000000')}>Black</a>
+            <a href="#" onClick={() => handleRimColorChange('#FFFFFF')}>White</a>
+            <a href="#" onClick={() => handleRimColorChange('#b3a31e')}>Gold</a>
+            <a href="#" onClick={() => handleRimColorChange('#c0c0c0')}>Silver</a>
+            <a href="#" onClick={() => handleRimColorChange('#767676')}>Dark Grey</a>
+          </div>
+        </div>
+
       </div>
 
 

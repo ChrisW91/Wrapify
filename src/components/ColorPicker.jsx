@@ -1,8 +1,5 @@
 
 
-
-
-
 export const ColorPicker = ({ setCarColor, carColor }) => {
   // console.log(carColor);
   // console.log('setCarColor type:', typeof setCarColor);

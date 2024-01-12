@@ -48,8 +48,8 @@ const App = () => {
           >
 
             <OrbitControls
-              minDistance={4}
-              maxDistance={15}
+              minDistance={5}
+              maxDistance={10}
               mouseButtons={{
                 LEFT: THREE.MOUSE.ROTATE,
                 MIDDLE: THREE.MOUSE.DOLLY,
@@ -80,7 +80,7 @@ const App = () => {
               setWheelColor={setWheelColor}
             />}
 
-            {/* <Volk_Te37 /> */}
+
 
           </Canvas>
 

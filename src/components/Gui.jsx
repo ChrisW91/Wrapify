@@ -21,14 +21,14 @@ const Gui = ({ setCarColor, carColor, showCarModel, setShowCarModel, setIsLoadin
   return (
     <>
 
-      {!showCarModel && (<div className="gui-container-left">
+      <div className="gui-container-left">
         <CarModelPicker
           showCarModel={showCarModel}
           setShowCarModel={setShowCarModel}
           onModelClick={handleCarModelClick}
         />
       </div>
-      )}
+
 
 
 

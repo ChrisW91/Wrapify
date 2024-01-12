@@ -13,7 +13,7 @@ import { useGLTF } from '@react-three/drei'
 
 
 
-export function Volk_Te37({ wheelColor, setWheelColor, ...props }) {
+export function VolkTe37({ wheelColor, setWheelColor, material, ...props }) {
 
   const { nodes, materials } = useGLTF('https://pub-1e74d0bc9c59443f90fdc7adddccf38e.r2.dev/volk_te-37_rim.glb')
   useGLTF.preload('https://pub-1e74d0bc9c59443f90fdc7adddccf38e.r2.dev/volk_te-37_rim.glb')
@@ -26,13 +26,18 @@ export function Volk_Te37({ wheelColor, setWheelColor, ...props }) {
     if (materials.material_0) {
       materials.material_0.color.setStyle(wheelColor)
     }
-  }, [wheelColor])
+  }, [wheelColor, materials.material_0])
 
+  useEffect(() => {
+    if (material) {
+      material.color.setStyle(wheelColor)
+    }
+  }, [wheelColor, material])
 
   return (
     <group {...props} dispose={null}>
       <group scale={1.69}>
-        <mesh geometry={nodes.Object_2.geometry} material={materials.material_0} />
+        <mesh geometry={nodes.Object_2.geometry} material={material} />
       </group>
     </group>
   )
