@@ -19,7 +19,7 @@ export function VolkTe37({ wheelColor, setWheelColor, material, ...props }) {
   useGLTF.preload('https://pub-1e74d0bc9c59443f90fdc7adddccf38e.r2.dev/volk_te-37_rim.glb')
 
   // const { nodes, materials } = useGLTF('models/volk_te-37_rim.glb')
-
+  // useGLTF.preload('models/volk_te-37_rim.glb')
 
 
   useEffect(() => {
