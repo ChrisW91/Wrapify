@@ -156,7 +156,6 @@ body {
 .color-pallete {
   width: 100px;
   height: 100px;
-  /* border: 1px solid white; */
   padding: 0;
   margin: 0;
   background-color: rgba(249, 244, 244, 1);
@@ -249,14 +248,13 @@ label {
   border: 0.5px solid white;
 }
 
-/* Dropdown container */
+
 .dropdown {
   position: relative;
   display: inline-block;
-
 }
 
-/* Dropdown content (hidden by default) */
+
 .dropdown-content {
   display: none;
   position: absolute;
@@ -266,12 +264,12 @@ label {
   border-radius: 10px;
 }
 
-/* Show the dropdown menu on hover */
+
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-/* Style the select element inside the dropdown */
+
 .dropdown-content a {
   color: white;
   padding: 5px;

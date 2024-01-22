@@ -25,7 +25,6 @@ export function SubaruWrxStiVa({ carColor, setCarColor, brakeColor, setBrakeColo
   // useGLTF.preload('models/subaru_wrx_sti2.glb')
   // useGLTF.preload('models/volk_te-37_rim.glb')
 
-
   const [applyWrxColor, setApplyWrxColor] = useState(false);
 
   useEffect(() => {
